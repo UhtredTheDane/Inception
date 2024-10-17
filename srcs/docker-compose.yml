@@ -44,3 +44,17 @@ services:
     restart: on-failure
     expose:
       - "9000"
+
+volumes:
+  wordpress:
+    driver: local
+    driver_opts:
+    type: 'none'
+    o: 'bind'
+    device: ${HOME_PATH}/data-mariadb
+  mariadb:
+    driver: local
+    driver_opts:
+    type: 'none'
+    o: 'bind'
+    device: ${HOME_PATH}/data-wordpress
