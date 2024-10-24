@@ -10,3 +10,23 @@
 #                                                                              #
 # **************************************************************************** #
 
+NAME = Inception
+DOCKERCOMPOSE = docker compose -f srcs/docker-compose.yml
+DATAPATH = /home/vboxuser
+
+all:${NAME}
+
+${NAME}:
+	mkdir -p ${DATAPATH}/data-mariadb
+	mkdir -p ${DATAPATH}/data-wordpress
+	${DOCKERCOMPOSE} build
+	${DOCKERCOMPOSE} up
+
+clean:
+	rm -rf ${DATAPATH}/data-mariadb
+	rm -rf ${DATAPATH}/data-wordpress
+	${DOCKERCOMPOSE} down
+
+fclean: clean
+
+.PHONY: all clean fclean
