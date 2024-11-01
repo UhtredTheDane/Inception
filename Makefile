@@ -26,6 +26,7 @@ clean:
 	rm -rf ${DATAPATH}/data-mariadb
 	rm -rf ${DATAPATH}/data-wordpress
 	${DOCKERCOMPOSE} down
+	docker volume rm `docker volume ls -q`;
 
 fclean: clean
 
