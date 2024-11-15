@@ -12,7 +12,7 @@
 
 NAME = Inception
 DOCKERCOMPOSE = docker compose -f srcs/docker-compose.yml
-DATAPATH = /home/vboxuser
+DATAPATH = /home/vboxuser/Documents
 
 all:${NAME}
 
@@ -29,5 +29,8 @@ clean:
 	docker volume rm `docker volume ls -q`;
 
 fclean: clean
+
+prune:	fclean
+	docker system prune -af
 
 .PHONY: all clean fclean

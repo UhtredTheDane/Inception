@@ -42,7 +42,7 @@ services:
     env_file: .env
     volumes:
       - wordpress:/var/www/wordpress
-    restart: on-failure
+    restart: unless-stopped
     expose:
       - "9000"
 

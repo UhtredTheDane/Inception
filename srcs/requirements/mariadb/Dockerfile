@@ -8,5 +8,6 @@ RUN chown -R mysql:mysql /var/run/mysqld
 COPY conf/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
 
 COPY tools/makeDBUser.sh /makeDBUser.sh
+RUN chmod 755 /makeDBUser.sh
 EXPOSE 3306
 ENTRYPOINT ["bash", "/makeDBUser.sh"]

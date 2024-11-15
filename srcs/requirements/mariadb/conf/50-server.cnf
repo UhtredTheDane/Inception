@@ -1,6 +1,7 @@
 [mysqld]
 datadir = /var/lib/mysql
 socket = /run/mysqld/mysqld.sock
-bind-address = *
+bind-address = localhost
 port = 3306
 user = mysql
+max_allowed_packet = 16M
