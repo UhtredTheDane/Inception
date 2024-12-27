@@ -1,8 +1,3 @@
-while ! mariadb -hlocalhost -u${SQL_USER} -p${SQL_PASSWORD} ${SQL_DATABASE};
-do
-	sleep 3
-done
-
 if [ ! -f /var/www/wordpress/wp-config.php ]; then
 	sleep 20
 	wp config create --allow-root --dbname=$SQL_DATABASE --dbuser=$SQL_USER --dbpass=$SQL_PASSWORD --dbhost=mariadb:3306 --path='/var/www/wordpress'
