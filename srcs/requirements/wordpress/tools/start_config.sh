@@ -1,7 +1,10 @@
+sleep 5
 if [ ! -f /var/www/wordpress/wp-config.php ]; then
-	sleep 20
 	wp config create --allow-root --dbname=$SQL_DATABASE --dbuser=$SQL_USER --dbpass=$SQL_PASSWORD --dbhost=mariadb:3306 --path='/var/www/wordpress'
-	echo "debut"
+	until wp db check --allow-root --path='/var/www/wordpress'; do
+		echo "Waiting for MariaDB to be ready..."
+		sleep 5
+	done
 	wp core install --allow-root --url=$WP_SITE --title=$WP_TITLE --admin_user=$WP_ADMIN --admin_password=$WP_ADMIN_PASSWORD --admin_email=$WP_ADMIN_EMAIL --path='/var/www/wordpress'
 	wp user create --allow-root "$WP_USER" "$WP_USER_EMAIL" --role=author --user_pass=$WP_USER_PASSWORD --path='/var/www/wordpress'
 echo "ici"
