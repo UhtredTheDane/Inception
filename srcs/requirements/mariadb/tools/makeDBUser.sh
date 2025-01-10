@@ -11,5 +11,4 @@ ALTER USER 'root'@'localhost' IDENTIFIED BY '${SQL_ROOT_PASSWORD}';
 FLUSH PRIVILEGES;
 EOF
 	mysqladmin -u root -p$SQL_ROOT_PASSWORD shutdown 
-echo "coucou"
 exec mysqld

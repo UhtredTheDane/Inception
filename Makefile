@@ -29,8 +29,6 @@ clean:
 	docker volume rm `docker volume ls -q`;
 
 fclean: clean
-
-prune:	fclean
 	docker system prune -af
 
 .PHONY: all clean fclean
