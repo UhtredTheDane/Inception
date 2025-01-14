@@ -22,13 +22,21 @@ ${NAME}:
 	${DOCKERCOMPOSE} build
 	${DOCKERCOMPOSE} up
 
-clean:
+start:
+	${DOCKERCOMPOSE} start
+
+stop:
+	${DOCKERCOMPOSE} stop
+
+down:
+	${DOCKERCOMPOSE} down
+
+clean: down
 	rm -rf ${DATAPATH}/data-mariadb
 	rm -rf ${DATAPATH}/data-wordpress
-	${DOCKERCOMPOSE} down
 	docker volume rm `docker volume ls -q`;
 
 fclean: clean
 	docker system prune -af
 
-.PHONY: all clean fclean
+.PHONY: all start stop down re clean fclean
