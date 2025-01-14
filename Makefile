@@ -12,7 +12,7 @@
 
 NAME = Inception
 DOCKERCOMPOSE = docker compose -f srcs/docker-compose.yml
-DATAPATH = /home/vboxuser/Documents
+DATAPATH = /home/vboxuser/data
 
 all:${NAME}
 
