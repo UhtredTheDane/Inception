@@ -31,12 +31,12 @@ stop:
 down:
 	${DOCKERCOMPOSE} down
 
-clean: down
+clean:
+	${DOCKERCOMPOSE} down --rmi all --volumes --remove-orphans
 	rm -rf ${DATAPATH}/data-mariadb
 	rm -rf ${DATAPATH}/data-wordpress
-	docker volume rm `docker volume ls -q`;
 
 fclean: clean
-	docker system prune -af
+	docker system prune -af --volumes
 
 .PHONY: all start stop down re clean fclean
